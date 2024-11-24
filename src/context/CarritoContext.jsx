@@ -45,10 +45,10 @@ export function CarritoProvider({ children }) {
         );
     };
 
-    // Opcional: Agregar función para obtener el total
-    const getTotal = () => {
-        return carrito.reduce((total, item) => total + (item.price * item.cantidad), 0);
-    };
+    const realizarPago = () => {
+        setCarrito([]);
+        alert("Pago realizado con exito")
+    }
 
     return (
         <CarritoContext.Provider value={{ 
@@ -56,7 +56,7 @@ export function CarritoProvider({ children }) {
             agregarAlCarrito, 
             eliminarDelCarrito,
             actualizarCantidad,
-            getTotal 
+            realizarPago
         }}>
             {children}
         </CarritoContext.Provider>
