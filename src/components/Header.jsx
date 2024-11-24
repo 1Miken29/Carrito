@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import LogoutUser from "./LogoutUser";
 import Carrito from "../assets/CarritoIcon";
+import { useCarrito } from "../context/CarritoContext";
 
 export default function Header() {
+  const { carrito } = useCarrito();
+
   return (
     <header className="bg-[#707070]">
       <nav
@@ -11,7 +14,6 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <Link to={"/"} className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
@@ -19,10 +21,11 @@ export default function Header() {
             />
           </Link>
         </div>
-        <div>
+        <div className="flex items-center">
           <Link to={"/carrito"}>
             <Carrito className="w-10 h-10"/>
           </Link>
+          <span className="bg-blue-400 p-2 rounded-full">{carrito.length}</span>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <LogoutUser />
